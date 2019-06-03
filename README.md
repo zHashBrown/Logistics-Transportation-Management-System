@@ -16,7 +16,7 @@
 
 登录界面：
 
-![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/banner.jpg)
+![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/login.png)
 
 车主接单：
 
