@@ -12,20 +12,20 @@
 
 系统主页：
 
-![系统主页]:(https://github.com/zxetb/Logistics-Transportation-Management-System/blob/master/img/home.png)
+![系统主页]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/home.png)
 
 登录界面：
 
-![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/blob/master/img/login.png)
+![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/login.png)
 
 车主接单：
 
-![车主接单]:(https://github.com/zxetb/Logistics-Transportation-Management-System/blob/master/img/order.png)
+![车主接单]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/order.png)
 
 if(you feel good)
 
 {
 
-   give me a star!
+      give me a star!
    
 }
