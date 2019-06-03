@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>已申请订单</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style_home.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/msg_share.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="https://cdn.bootcss.com/datatables/1.10.16/js/jquery.dataTables.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic"
+		 rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" type="text/css">
+		<style>
+			.content {
+			margin: 50px auto;
+			border: 1px solid #ccc;
+		}
+		.operation {
+			margin: 10px;
+		}
+		.operation>button {
+			margin: 10px;
+		}
+		#books_length {
+			float: left;
+			margin-left: 20px;
+		}
+		#books_filter {
+			float: right;
+			margin-right: 20px;
+		}
+		#books {
+			margin: 5px;
+		}
+		.center-block {
+			display: block;
+			margin: auto;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="modal fade" id="addBook" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<span class="modal-title">订单详情</span>
+					</div>
+					<div id="addBookModal" class="modal-body">
+						<form method="get" role="form" class="form-horizontal" id="subform_driver_delete">
+							<div class="form-group" style="display: none;">
+								<label for="Orderkey" class="col-sm-3 control-label">订单号:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" name="Orderkey" id="Orderkey" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Cargoname" class="col-sm-3 control-label">商品名称:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Cargoname" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Category" class="col-sm-3 control-label">商品类型:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Category" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Beginplace" class="col-sm-3 control-label">出发地:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Beginplace" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Endpalce" class="col-sm-3 control-label">目的地:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Endplace" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Pay" class="col-sm-3 control-label">价格:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Pay" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Reqtime" class="col-sm-3 control-label">订单状态:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Status" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Reqtime" class="col-sm-3 control-label">要求送达时间:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Reqtime" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Weight" class="col-sm-3 control-label">重量:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Weight" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Publisher" class="col-sm-3 control-label">发布者:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Publisher" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Phonenumber" class="col-sm-3 control-label">联系方式:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Phonenumber" type="text" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="Publishtime" class="col-sm-3 control-label">发布时间:*</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="Publishtime" type="text" readonly="true">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="center-block" align="center">
+							<button id="cancelAdd" type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+							<button id="delete" type="button" class="btn btn-danger" data-dismiss="modal">撤销申请</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="banner1">
+			<div class="container">
+				<center>
+					<div class="logo">
+						<a href="Driver_main.html">Pass All<span>Logistics Transportation System</span></a>
+					</div>
+				</center>
+				<div class="navigation">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="cl-effect-13" id="cl-effect-13">
+								<ul class="nav navbar-nav">
+									<li><a href="Driver_main.html">主页</a></li>
+									<li><a href="Driver_check.html">查看订单</a></li>
+									<li><a href="Driver_applied.html" class="active">已申请订单</a></li>
+									<li><a href="Driver_passed.html">已通过订单</a></li>
+									<li><a href="Driver_information.html">个人资料</a></li>
+									<li><a href="Driver_mailus.html">联系我们</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="container2">
+			<div class="blog">
+				<div class="container">
+					<h3 style=" font-family:微软雅黑;"><span>在此页面显示的是 </span> 您申请的订单 </h3><br />
+					<p class="dolore">您可以查看订单详情或撤销申请</p>
+				</div>
+				<section class="content">
+
+					<table id="books" class="table table-striped table-bordered row-border hover order-column" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>订单号</th>
+								<th>商品名称</th>
+								<th>商品类型</th>
+								<th>出发地</th>
+								<th>目的地</th>
+								<th>价格</th>
+								<th>订单状态</th>
+								<th>要求送达时间</th>
+								<th>重量</th>
+								<th>发布者</th>
+								<th>联系方式</th>
+								<th>发布时间</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+						<div class="btn-group operation">
+							<button id="btn_add" type="button" class="btn bg-primary" style="color: black; display: none;">
+								<span class="glyphicon" aria-hidden="true"></span>选择此订单
+							</button>
+						</div>
+					</table>
+				</section>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var arr = new Array(); //先声明一维
+		function text() {
+			$.ajax({
+				type: "post",
+				async: false,
+				data: 'number=' + $.cookie('user'),
+				url: "http://localhost:8081/msg_orders_applied.php",
+				dataType: "json",
+				success: function(result) {
+					for (var i = 0; i < result.length; i++) { //一维长度为length
+						arr[i] = new Array(); //再声明二维
+						arr[i][0] = "";
+						arr[i][1] = result[i].Orderkey;
+						arr[i][2] = result[i].Cargoname;
+						arr[i][3] = result[i].Category;
+						arr[i][4] = result[i].Beginplace;
+						arr[i][5] = result[i].Endplace;
+						arr[i][6] = result[i].Pay;
+						arr[i][7] = result[i].Status;
+						arr[i][8] = result[i].Reqtime;
+						arr[i][9] = result[i].Weight;
+						arr[i][10] = result[i].Publisher;
+						arr[i][11] = result[i].Numbers;
+						arr[i][12] = result[i].Publishtime;
+					}
+				}
+			})
+			return;
+		}
+	</script>
+	<script>
+		text();
+		var table;
+		var data = arr;
+		$(function() {
+			var table = $('#books').DataTable({
+				data: data,
+				"pagingType": "full_numbers",
+				"bSort": true,
+				"language": {
+					"sProcessing": "处理中...",
+					"sLengthMenu": "显示 _MENU_ 项结果",
+					"sZeroRecords": "没有匹配结果",
+					"sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+					"sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+					"sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+					"sInfoPostFix": "",
+					"sSearch": "搜索:",
+					"sUrl": "",
+					"sEmptyTable": "表中数据为空",
+					"sLoadingRecords": "载入中...",
+					"sInfoThousands": ",",
+					"oPaginate": {
+						"sFirst": "首页",
+						"sPrevious": "上页",
+						"sNext": "下页",
+						"sLast": "末页"
+					},
+					"oAria": {
+						"sSortAscending": ": 以升序排列此列",
+						"sSortDescending": ": 以降序排列此列"
+					}
+				},
+				"columnDefs": [{
+					"searchable": false,
+					"orderable": true,
+					"targets": 0
+				}, {
+					"targets": [1, 7, 9, 10, 11],
+					"visible": false,
+				}, ],
+				"order": [
+					[1, 'asc']
+				]
+			});
+			table.on('order.dt search.dt', function() {
+				table.column(0, {
+					search: 'applied',
+					order: 'applied'
+				}).nodes().each(function(cell, i) {
+					cell.innerHTML = i + 1;
+				});
+			}).draw();
+			$('#books tbody').on('click', 'tr', function() {
+				if ($(this).hasClass('selected')) {
+					$(this).removeClass('selected');
+				} else {
+					table.$('tr.selected').removeClass('selected');
+					$(this).addClass('selected');
+					document.getElementById("btn_add").click();
+				}
+			});
+			$("#cancelAdd").on('click', function() {
+				$("#addBookModal").find('input').val('')
+			})
+			$("#delete").on('click', function() {
+				$.ajax({
+					type: "post",
+					async: false,
+					url: "http://localhost:8081/driver_delete.php",
+					data: $("#subform_driver_delete").serialize() + '&' + 'number=' + $.cookie('user'),
+					dataType: "json",
+					success: function(result) {
+						alert('撤销成功!');
+					}
+				});
+				location.reload();
+			});
+			$("#btn_add").click(function() {
+				$("#addBook").modal()
+				var rowData = table.rows('.selected').data()[0];
+				var inputs = $("#addBookModal").find('input')
+				for (var i = 0; i < inputs.length; i++) {
+					$(inputs[i]).val(rowData[i + 1])
+				}
+			});
+			$.fn.dataTable.ext.search.push(
+				function(settings, data, dataIndex) {
+					if (data[7] != '等待接单') {
+						return false;
+					}
+					return true;
+				}
+			);
+			table.draw();
+		})
+	</script>
+</html>

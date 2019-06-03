@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>个人资料</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style_home.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="js/jquery-3.3.1.js"></script>
+		<script type="text/ecmascript" src="md5.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/msg_share.js"></script>
+		<script src="js/msg_driver.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<style type="text/css">
+			.box-padding {
+				padding: 10px;
+			}
+
+			.label-name {
+				text-align: right;
+			}
+		</style>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic"
+		 rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+		<!-- bannner -->
+		<div class="banner1">
+			<div class="container">
+				<div class="logo">
+					<a href="Driver_main.html">Pass All<span>Logistics Transportation System</span></a>
+				</div>
+
+				<div class="navigation">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="cl-effect-13" id="cl-effect-13">
+								<ul class="nav navbar-nav">
+									<li><a href="Driver_main.html">主页</a></li>
+									<li><a href="Driver_check.html">查看订单</a></li>
+									<li><a href="Driver_applied.html">已申请订单</a></li>
+									<li><a href="Driver_passed.html">已通过订单</a></li>
+									<li><a href="Driver_Information.html" class="active">个人资料</a></li>
+									<li><a href="Driver_mailus.html">联系我们</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- //bannner -->
+		<!-- blog -->
+		<div class="blog">
+			<div class="container">
+				<h3><span>Please Perfect</span> Your Information</h3>
+				<p class="dolore">Complete your personal information and let your customers know you better.</p>
+				<div class="services-grids">
+					<div class="col-sm-12 services-grid-left">
+						<div class="col-sm-7">
+							<div class="box-padding">
+								<form method="get" role="form" class="form-horizontal" id="subform_driver">
+									<div class="form-group">
+										<label class="col-sm-5 control-label label-name">账号：</label>
+										<div class="col-sm-7">
+											<input class="form-control" name="number" id="number" value="" type="text" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-5 control-label label-name">密码：</label>
+										<div class="col-sm-7">
+											<input class="form-control" name="Password" value="" type="text" id="Password" required="true" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-5 control-label label-name">姓名：</label>
+										<div class="col-sm-7">
+											<input class="form-control" name="Name" value="" type="text" id="Name" required="true" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-5 control-label label-name">车牌号：</label>
+										<div class="col-sm-7">
+											<input class="form-control" name="Carnumber" value="" type="text" id="Carnumber" required="true" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-5 control-label label-name">车型：</label>
+										<div class="col-sm-7">
+											<select name="CarType" id="CarType" class="form-control" disabled="true">
+												<option value="小型车">小型车</option>
+												<option value="中型车">中型车</option>
+												<option value="大型车">大型车</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-5 control-label label-name">可运输类型：</label>
+										<div class="col-sm-7">
+											<select name="TransportType" id="TransportType" class="form-control" disabled="true">
+												<option value="食品">食品</option>
+												<option value="木材">木材</option>
+												<option value="煤炭">煤炭</option>
+												<option value="金属">金属</option>
+												<option value="石油">石油</option>
+												<option value="服饰">服饰</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-5 control-label label-name">余额：</label>
+										<div class="col-sm-7">
+											<input class="form-control" name="Account" id="Account" value="" type="text" readonly="true" />
+										</div>
+									</div>
+									<div class="col-sm-2 col-sm-offset-7">
+										<button type="button" onclick="changeState();" class="btn btn-lg btn-custom" id="change">修改</button>
+									</div>
+									<div class="col-sm-2">
+										<button type="submit" onclick="submit_driver();" class="btn btn-lg btn-custom">提交</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //blog -->
+		<!-- for bootstrap working -->
+		<script type="text/javascript">
+			share(2);
+			show();
+		</script>
+
+		<script type="text/javascript">
+			var i = 0;
+
+			function changeState() {
+				i++;
+				if (i % 2 != 0) {
+					document.getElementById("change").innerHTML = "返回";
+					document.getElementById("Password").readOnly = false;
+					document.getElementById("Carnumber").readOnly = false;
+					document.getElementById("Name").readOnly = false;
+					document.getElementById("CarType").disabled = false;
+					document.getElementById("TransportType").disabled = false;
+				} else {
+					document.getElementById("change").innerHTML = "修改";
+					document.getElementById("Password").readOnly = true;
+					document.getElementById("Carnumber").readOnly = true;
+					document.getElementById("Name").readOnly = true;
+					document.getElementById("CarType").disabled = true;
+					document.getElementById("TransportType").disabled = true;
+				}
+			}
+		</script>
+		<script src="js/bootstrap.js"></script>
+		<!-- //for bootstrap working -->
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>个人资料</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style_home.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="js/msg_share.js"></script>
+		<script src="js/msg_owner.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<style type="text/css">
+			.box-padding {
+				padding: 10px;
+			}
+
+			.label-name {
+				text-align: right;
+			}
+		</style>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic"
+		 rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<label class="modal-title" id="myModalLabel">请选择充值方式与金额</label>
+					</div>
+					<div class="modal-body" style="height:150px;">
+						<form method="get" role="form" class="form-horizontal" id="subform_owner_pay">
+							<div class="form-group"><br />
+								<label class="col-sm-3 control-label label-name">充值方式：</label>
+								<div class="col-sm-8">
+									<select class="form-control" name="Pay" id="Pay">
+										<option value="支付宝">支付宝</option>
+										<option value="微信">微信</option>
+										<option value="信用卡">信用卡</option>
+										<option value="Visa">Visa</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label label-name">金额：</label>
+								<div class="col-sm-8">
+									<input class="form-control" value="0" type="text" name="charge" id="charge" required="true" placeholder="请输入金额…" />
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" onclick="Recharge()">Pay</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<!-- bannner -->
+		<div class="banner1">
+			<div class="container">
+				<div class="logo">
+					<a href="Owner_main.html">Pass All<span>Logistics Transportation System</span></a>
+				</div>
+				<div class="navigation">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="cl-effect-13" id="cl-effect-13">
+								<ul class="nav navbar-nav">
+									<li><a href="Owner_main.html">主页</a></li>
+									<li><a href="Owner_published.html">已发订单</a></li>
+									<li><a href="Owner_accepted.html">已被接单</a></li>
+									<li><a href="Owner_transforming.html">正在运输</a></li>
+									<li><a href="Owner_Information.html" class="active">个人资料</a></li>
+									<li><a href="Owner_mailus.html">联系我们</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- //bannner -->
+		<!-- blog -->
+		<div class="blog">
+			<div class="container">
+				<h3><span>Please Perfect</span> Your Information</h3>
+				<p class="dolore">Complete your personal information and let your customers know you better.</p>
+				<div class="services-grids">
+					<div class="col-sm-12 services-grid-left">
+						<div class="col-sm-12">
+							<div class="box-padding">
+								<form method="get" role="form" class="form-horizontal" id="subform_owner">
+									<div class="form-group">
+										<label class="col-sm-3 control-label label-name">账号：</label>
+										<div class="col-sm-5">
+											<input class="form-control" name="number" id="number" value="" type="text" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label label-name">密码：</label>
+										<div class="col-sm-5">
+											<input class="form-control" value="" type="text" name="Password" id="Password" required="true" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label label-name">姓名：</label>
+										<div class="col-sm-5">
+											<input class="form-control" value="" type="text" name="Name" id="Name" required="true" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label label-name">住址：</label>
+										<div class="col-sm-5">
+											<input class="form-control" value="" type="text" name="Address" id="Address" required="true" readonly="true" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label label-name">常用货物：</label>
+										<div class="col-sm-5">
+											<select class="form-control" name="Cargo" id="Cargo" disabled="true">
+												<option value="木材">木材</option>
+												<option value="金属">金属</option>
+												<option value="石油">石油</option>
+												<option value="食品">食品</option>
+												<option value="服饰">服饰</option>
+												<option value="煤炭">煤炭</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label label-name">余额：</label>
+										<div class="col-sm-5">
+											<input class="form-control" name="Account" id="Account" value="" type="text" readonly="true" />
+										</div>
+									</div>
+
+									<div class="col-sm-2 col-sm-offset-3 modify">
+										<button type="button" class="btn btn-lg btn-custom" data-toggle="modal" data-target="#myModal" id="Recharge">账户充值</button>
+									</div>
+									<div class="col-sm-1">
+										<button type="button" onclick="changeState();" id="change" class="btn btn-lg btn-custom">修改</button>
+									</div>
+									<div class="col-sm-1 ">
+										<button type="submit" onclick="submit_owner();" class="btn btn-lg btn-custom">提交</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			share(2);
+			show();
+		</script>
+
+		<script type="text/javascript">
+			var i = 0;
+
+			function changeState() {
+				i++;
+				if (i % 2 != 0) {
+					document.getElementById("change").innerHTML = "返回";
+					document.getElementById("Password").readOnly = false;
+					document.getElementById("Name").readOnly = false;
+					document.getElementById("Address").readOnly = false;
+					document.getElementById("Cargo").disabled = false;
+				} else {
+					document.getElementById("change").innerHTML = "修改";
+					document.getElementById("Password").readOnly = true;
+					document.getElementById("Name").readOnly = true;
+					document.getElementById("Address").readOnly = true;
+					document.getElementById("Cargo").disabled = true;
+				}
+			}
+		</script>
+		<script src="js/bootstrap.js"></script>
+		<!-- //for bootstrap working -->
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>物流运输平台登录界面</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="js/jquery-3.3.1.js"> </script>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/form_elements.css" />
+		<link rel="stylesheet" href="css/style_login_register.css">
+		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/msg_share.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/md5.js"></script>
+	</head>
+	<body>
+		<div class="top-content" id="mainbg">
+			<div class="inner-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-8 col-sm-offset-2 text">
+							<h1><strong>物流运输平台</strong><br>登录界面</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3 form-box">
+							<div class="form-top">
+								<div>
+									<center>
+										<h3>请登录</h3>
+										<p>请输入您的账号密码:</p>
+									</center>
+								</div>
+							</div>
+							<div class="form-bottom">
+								<form role="form" method="get" class="login-form" id="subform">
+									<div class="form-group">
+										<label class="col-md-6" for="telephone">手 机 号 :</label>
+										<input type="text" name="telephone" placeholder="账号..." class="form-username form-control" id="telephone">
+									</div>
+									<div class="form-group">
+										<label class="col-md-6" for="password">Password</label>
+										<input type="password" name="password" placeholder="密码..." class="form-password form-control" id="password">
+									</div>
+									<div class="form-group" style="display:none">
+										<input type="text" name="table" class="table form-control" id="table" value="">
+									</div>
+									<center>
+										<br />
+										<p>
+											<input type="radio" name="choice" onclick="choiceTest(1)" />我是货主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="choice" onclick="choiceTest(2)" />我是车主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="choice" onclick="choiceTest(3)" />我是管理员
+										</p>
+									</center>
+									<button type="submit" class="btn" onclick="login()">登录</button>
+									<br />
+									<p>若没有账号请点击 <a href="Register.html"><u>这里</u></a>进行注册！</p>
+								</form>
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+						var flag = 0;
+
+						function choiceTest(number) {
+							flag = number;
+							if (flag == 2)
+								$("#table").val("driver");
+							else if (flag == 1)
+								$("#table").val("owner");
+							else if (flag == 3)
+								$("#table").val("admin");
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
