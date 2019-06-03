@@ -10,14 +10,13 @@
 使用时注意导入carriage数据库
 
 
-系统主页：
 
 ![系统主页]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/home.png)
 
-登录界面：
+
 
 ![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/blob/master/img/background.jpg)
 
-车主接单：
+
 
 ![车主接单]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/order.png)
