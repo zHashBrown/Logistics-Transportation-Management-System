@@ -8,3 +8,13 @@
 当然你也可以部署到自己的服务器上，只需要更改js文件中的路径即可，同样移动php文件
 
 使用时注意导入carriage数据库
+
+系统主页：
+![系统主页]:(https://github.com/zxetb/Logistics-Transportation-Management-System/img/home.png)
+
+登录界面：
+![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/img/login.png)
+
+
+车主接单：
+![车主接单]:(https://github.com/zxetb/Logistics-Transportation-Management-System/img/order.png)
