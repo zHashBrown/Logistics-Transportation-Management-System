@@ -16,16 +16,8 @@
 
 登录界面：
 
-![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/login.png)
+![登录界面]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/banner.jpg)
 
 车主接单：
 
 ![车主接单]:(https://github.com/zxetb/Logistics-Transportation-Management-System/raw/master/img/order.png)
-
-if(you feel good)
-
-{
-
-      give me a star!
-   
-}
